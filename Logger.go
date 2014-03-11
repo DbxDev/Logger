@@ -55,3 +55,21 @@ func Errorf(format string, args ...interface{}) {
 func logf(suffix string, format string, args ...interface{}) {
 	fmt.Printf(suffix+format+"\n", args...)
 }
+
+func SetDebug() {
+	Infof("Logger set to DEBUG")
+	logAll = false
+	*debug = true
+}
+func SetInfo() {
+	Infof("Logger set to INFO")
+	logAll = false
+	*debug = false
+	*info = true
+}
+func SetError() {
+	Infof("Logger set to INFO")
+	logAll = false
+	*debug, *info, *warn = false, false, false
+	*error = true
+}
